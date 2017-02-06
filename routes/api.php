@@ -19,6 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('pdfdocument', 'PDFGeneratorController@dispatchGeneratorTask');
 
-Route::get('pdfdocument', function() {
-    return 'Make pdf document';
-});
+Route::get('pdfdocument', 'PDFGeneratorController@test');
