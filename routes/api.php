@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('pdfdocument', function($test) {
+    return $test;
+});
+
+Route::get('pdfdocument', function() {
+    return 'Make pdf document';
+});
