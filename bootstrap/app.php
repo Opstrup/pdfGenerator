@@ -41,10 +41,16 @@ $app->singleton(
     pdfgenerator\Exceptions\Handler::class
 );
 
-$app->singleton(
+/*
+ * These app bindings is commented atm,
+ * they should be used to create aliases for snappyPDF
+ * but dose not seem to be used.
+ */
+
+/*$app->singleton(
     class_alias(Barryvdh\Snappy\Facades\SnappyPdf::class, 'PDF'),
     class_alias(Barryvdh\Snappy\Facades\SnappyImage::class, 'SnappyImage')
-);
+);*/
 
 /*
 |--------------------------------------------------------------------------
