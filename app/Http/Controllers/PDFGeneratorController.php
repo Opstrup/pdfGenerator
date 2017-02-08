@@ -3,7 +3,9 @@
 namespace pdfgenerator\Http\Controllers;
 
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\App;
+use pdfgenerator\Jobs\GenerateInvoice;
 
 class PDFGeneratorController extends Controller
 {
@@ -24,10 +26,9 @@ class PDFGeneratorController extends Controller
 
     public function test()
     {
-        $snappy = App::make('snappy.pdf');
-        $path = __DIR__ . '../../../../temp/';
-        $fileName = time() . '.pdf';
-        $snappy->generateFromHtml('<h1>Bill</h1><p>You owe me money, dude.</p>', $path . $fileName);
+        Log::info('generating pdf task send to queue');
+        $this->dispatch(new GenerateInvoice());
+        Log::info('pdf task is now done');
         return 'pdf created';
     }
 }
