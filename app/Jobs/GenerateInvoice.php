@@ -31,7 +31,7 @@ class GenerateInvoice implements ShouldQueue
     public function handle()
     {
         $snappy = App::make('snappy.pdf');
-        $path = __DIR__ . '../../../temp/';
+        $path = __DIR__ . '/../../temp/';
         $fileName = time() . '.pdf';
         $snappy->generateFromHtml('<h1>Bill</h1><p>You owe me money, dude.</p>', $path . $fileName);
     }
