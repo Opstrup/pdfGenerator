@@ -3,6 +3,7 @@
 namespace pdfgenerator\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use pdfgenerator\Util\PDFGenerator;
 
 class PDFGeneratorServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,8 @@ class PDFGeneratorServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('PDFGenerator', function() {
+            return new PDFGenerator();
+        });
     }
 }

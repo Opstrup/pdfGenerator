@@ -181,6 +181,11 @@ return [
          * Snappy - PDF generator tool
          */
         Barryvdh\Snappy\ServiceProvider::class,
+
+        /*
+         * Costume providers
+         */
+        pdfgenerator\Providers\PDFGeneratorServiceProvider::class,
     ],
 
     /*
@@ -231,6 +236,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+
+        'PDFGenerator' => pdfgenerator\Facades\PDFGeneratorFacade::class,
     ],
 
 ];
