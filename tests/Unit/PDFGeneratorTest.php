@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use pdfgenerator\PDFGenerator;
+use pdfgenerator\Util\PDFGenerator;
 use Tests\TestCase;
 
 class PDFGeneratorTest extends TestCase
@@ -17,9 +17,9 @@ class PDFGeneratorTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function test_default_pdflayout_size_should_be_1x1()
+    public function test_simple_dummy_test()
     {
-        $UUT = new PDFGenerator(1, 1);
-        $this->assertEquals(sizeof($UUT.getPdflayout()), 1);
+        $UUT = new PDFGenerator();
+        $this->assertEquals($UUT->test(), true);
     }
 }
