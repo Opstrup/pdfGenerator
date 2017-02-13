@@ -12,21 +12,26 @@ class PDFGenerator
         Log::info('*-------------------------------------------*');
         Log::info('|      Facade started on pdf generation     |');
 
+        /*--user-style-sheet <url>        Specify a user style sheet, to load with
+                                      every page*/
+
         $snappy = App::make('snappy.pdf');
         $path = __DIR__ . '/../../temp/';
         $fileName = time() . '.pdf';
-        $snappy->generateFromHtml('<div class="container">' .
+        $snappy->generateFromHtml('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">' .
+            '<div class="container">' .
             '<div class="row">' .
-            '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">' .
+            '<div class="col-xs-12">' .
             '<h1>Hello</h1>' .
             '</div>' .
-            '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">' .
+            '<div class="col-xs-3 pull-left">' .
             '<h3>' . $JSONdata . '</h3>' .
             '</div>' .
-            '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">' .
+            '<div class="col-xs-3 pull-right">' .
             '<h3>Goodbye</h3>' .
             '</div>' .
             '</div>' .
+            '<button class="btn btn-default">Test</button>' .
             '</div>', $path . $fileName);
     }
 
