@@ -17,10 +17,12 @@ class PDFGeneratorController extends Controller
 
     public function test()
     {
-        Log::info('generating pdf task send to queue');
-        $fakeData = 'Hello';
+        Log::info('*-----------------------------------*');
+        Log::info('| generating pdf task send to queue |');
+        Log::info('*-----------------------------------*');
+
+        $fakeData = 'Awesome';
         $this->dispatch(new GenerateInvoice($fakeData));
-        Log::info('pdf task is now done');
         return 'pdf created';
     }
 }
