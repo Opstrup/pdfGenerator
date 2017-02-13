@@ -12,4 +12,8 @@ namespace pdfgenerator\Util;
 class Element
 {
 
+    public function toString()
+    {
+
+    }
 }

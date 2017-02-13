@@ -4,6 +4,7 @@ namespace pdfgenerator\Util;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
+use pdfgenerator\Util\LayoutHandler;
 
 class PDFGenerator
 {

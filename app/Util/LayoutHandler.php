@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: IT Minds
- * Date: 13-02-2017
- * Time: 13:13
- */
 
 namespace pdfgenerator\Util;
 
+use pdfgenerator\Util\Element;
 
 class LayoutHandler
 {
@@ -21,9 +16,9 @@ class LayoutHandler
         $this->_layoutStyle = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">';
     }
 
-    public function addElement($element)
+    public function addElement(Element $element)
     {
-        $this->_body[] = $element;
+        $this->_body[] = $element->toString();
     }
 
     public function getLayout()
@@ -36,5 +31,4 @@ class LayoutHandler
 
         return $this->_layoutStyle . $this->_openingContainer . $body . $this->_closingContainer;
     }
-
 }
