@@ -12,9 +12,6 @@ class PDFGenerator
         Log::info('*-------------------------------------------*');
         Log::info('|      Facade started on pdf generation     |');
 
-        /*--user-style-sheet <url>        Specify a user style sheet, to load with
-                                      every page*/
-
         $snappy = App::make('snappy.pdf');
         $path = __DIR__ . '/../../temp/';
         $fileName = time() . '.pdf';

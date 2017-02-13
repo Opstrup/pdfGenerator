@@ -2,17 +2,21 @@
 
 namespace pdfgenerator\Http\Controllers;
 
-use Illuminate\Auth\Access\Response;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use pdfgenerator\Jobs\GenerateInvoice;
 
 class PDFGeneratorController extends Controller
 {
-    public function dispatchGeneratorTask(Response $response)
+    public function dispatchGeneratorTask(Request $request)
     {
         // dispatch request to correct queue
-        $fakeData = 'Hello';
-        $this->dispatch(new GenerateInvoice($fakeData));
+        $data = $request->json()->all();
+        Log::info('*-----------------------------------*');
+        Log::info('| generating pdf task send to queue |');
+        Log::info('*-----------------------------------*');
+
+        $this->dispatch(new GenerateInvoice($data['data']));
     }
 
     public function test()
