@@ -11,6 +11,12 @@ class LayoutHandler
     private $_closingContainer = '</div>';
     private $_body = array();
 
+    /*
+     * TODO:
+     * Add calculation for pages
+     * Add intelligent page break
+     */
+
     function __construct()
     {
         // TODO: Add dynamic loading of stylesheets
