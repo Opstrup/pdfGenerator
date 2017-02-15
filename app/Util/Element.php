@@ -3,7 +3,7 @@
 namespace pdfgenerator\Util;
 
 
-class Element
+abstract  class Element
 {
     private $_classes;
     private $_styles;
@@ -22,7 +22,17 @@ class Element
 
     public function toString()
     {
-        return '<div class="' . $this->_classes . '" style="' . $this->_styles . '"></div>';
+        // Needs to be implemented in child classes
+    }
+
+    public function getClasses()
+    {
+        return $this->_classes;
+    }
+
+    public function getStyles()
+    {
+        return $this->_styles;
     }
 
     private function unwrapArray($array)
