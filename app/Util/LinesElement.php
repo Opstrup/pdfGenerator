@@ -8,6 +8,6 @@ class LinesElement extends Element
 {
     public function toString()
     {
-        return '<img class="' . parent::getClasses() . '" style="' . parent::getStyles() . '">';
+        return '<table class="table' . parent::getClasses() . '" style="' . parent::getStyles() . '"> </table>';
     }
 }
