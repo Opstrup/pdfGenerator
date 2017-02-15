@@ -4,7 +4,7 @@ namespace pdfgenerator\Util;
 
 use pdfgenerator\Util\Element;
 
-class ImageElement extends Element
+class LinesElement extends Element
 {
     public function toString()
     {
