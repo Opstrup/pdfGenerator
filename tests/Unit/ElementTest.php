@@ -40,4 +40,14 @@ class ElementTest extends TestCase
         $element = '<div class="pull-right col-md-1" style="align-items: center; background-color: #0d3625;"></div>';
         $this->assertEquals($element, $UUT->toString());
     }
+
+    public function test_element_should_be_an_img_tag()
+    {
+        $styles = [""];
+        $classes = [""];
+        $type = "img";
+        $UUT = new Element($classes, $styles, $type);
+        $element = '<img class="" style="">';
+        $this->assertEquals($element, $UUT->toString());
+    }
 }
