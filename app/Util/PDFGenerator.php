@@ -44,6 +44,12 @@ class PDFGenerator
                 '</tr>' .
                 $tableBody .
             '</table>' .
+            '<footer class="page-break">' .
+            '<h3>' .
+                'Footer Text goes here' .
+            '</h3>' .
+            '</footer>' .
+            '<h1>Test with page break</h1>' .
             '</div>', $path . $fileName);
     }
 
