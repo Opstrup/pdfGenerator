@@ -10,7 +10,6 @@ abstract  class Element
 
     /*
      * TODO:
-     * Add different elements (span, img, h1, h2, h3, lines..)
      * Add functionality for setting content of element
      */
 

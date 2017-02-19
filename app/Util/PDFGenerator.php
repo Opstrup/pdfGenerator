@@ -16,7 +16,7 @@ class PDFGenerator
         $snappy = App::make('snappy.pdf');
         $path = __DIR__ . '/../../temp/';
         $fileName = time() . '.pdf';
-        var_dump($JSONdata); die();
+//        var_dump($JSONdata); die();
 
         $tableBody = "";
         foreach ($JSONdata["lines"] as $line)
@@ -30,9 +30,10 @@ class PDFGenerator
         }
 
         $snappy->generateFromHtml('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">' .
+            '<link rel="stylesheet" type="text/css" href="' . public_path("/css/PDFStyles.css") . '" >' .
             '<div class="container">' .
-            '<div class="col-xs-3 pull-left">' .
-            '<h3>' . $JSONdata["data"] . '</h3>' .
+            '<div class="col-xs-3 pull-right">' .
+            '<h1>' . $JSONdata["data"] . '</h1>' .
             '</div>' .
             '<table class="table table-condensed">' .
                 '<tr>' .
