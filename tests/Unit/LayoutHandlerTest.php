@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use pdfgenerator\Util\LayoutHandler;
 use pdfgenerator\Util\Element;
+use pdfgenerator\Util\Row;
 
 class LayoutHandlerTest extends TestCase
 {
@@ -17,34 +18,53 @@ class LayoutHandlerTest extends TestCase
         $this->assertEquals($UUT->getLayout(), $pdfSkeleton);
     }
 
-    public function test_added_element_should_be_in_layout()
+    public function test_layout_should_have_empty_row()
     {
         $UUT = new LayoutHandler();
-        $element = $this->createMock(Element::class);
-        $element->method('toString')
-                ->willReturn('<p>Hello</p>');
-        $UUT->addElement($element);
+        $UUT->addRow(new Row());
+        $pdfSkeleton = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">' .
+            '<div class="container">' .
+                '<div class="row"></div>' .
+            '</div>';
+        $this->assertEquals($UUT->getLayout(), $pdfSkeleton);
+    }
+
+    public function test_row_with_element_should_be_in_layout()
+    {
+        $UUT = new LayoutHandler();
+        $row = $this->createMock(Row::class);
+        $row->method('toString')
+            ->willReturn('<div class="row"><p>Hello</p></div>');
+
+        $UUT->addRow($row);
 
         $layout = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">' .
             '<div class="container">' .
-            '<p>Hello</p>' .
+                '<div class="row">' .
+                    '<p>Hello</p>' .
+                '</div>' .
             '</div>';
         $this->assertEquals($UUT->getLayout(), $layout);
     }
 
-    public function test_two_elements_should_be_in_layout()
+    public function test_two_rows_with_elements_should_be_in_layout()
     {
         $UUT = new LayoutHandler();
-        $element = $this->createMock(Element::class);
-        $element->method('toString')
-                ->willReturn('<p>Hello</p>');
-        $UUT->addElement($element);
-        $UUT->addElement($element);
+        $row = $this->createMock(Row::class);
+        $row->method('toString')
+            ->willReturn('<div class="row"><p>Hello</p></div>');
+
+        $UUT->addRow($row);
+        $UUT->addRow($row);
 
         $layout = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">' .
             '<div class="container">' .
-            '<p>Hello</p>' .
-            '<p>Hello</p>' .
+                '<div class="row">' .
+                    '<p>Hello</p>' .
+                '</div>' .
+                '<div class="row">' .
+                    '<p>Hello</p>' .
+                '</div>' .
             '</div>';
         $this->assertEquals($UUT->getLayout(), $layout);
     }

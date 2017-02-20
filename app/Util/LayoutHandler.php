@@ -28,9 +28,9 @@ class LayoutHandler
             . $styles;
     }
 
-    public function addElement(Element $element)
+    public function addRow(Row $row)
     {
-        $this->_body[] = $element->toString();
+        $this->_body[] = $row->toString();
     }
 
     public function getLayout()

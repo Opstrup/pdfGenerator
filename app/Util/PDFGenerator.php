@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use pdfgenerator\Util\LayoutHandler;
 use PhpParser\Node\Expr\AssignOp\Div;
+use pdfgenerator\Util\Row;
 
 class PDFGenerator
 {
@@ -34,17 +35,19 @@ class PDFGenerator
 
                 foreach ($data["layout"]["firstpage"] as $row)
                 {
+                    $rowInLayout = new Row();
                     foreach ($row as $col)
                     {
                         if ($col["element"]["type"] == "image") {
                             $element = new ImageElement($col["element"]["class"], $col["element"]["style"], $col["element"]["src"]);
-                            $this->_layoutHandler->addElement($element);
+                            $rowInLayout->addElementToRow($element);
                         }
                         else if ($col["element"]["type"] == "div") {
                             $element = new DivElement($col["element"]["class"], $col["element"]["style"], $col["element"]["content"]);
-                            $this->_layoutHandler->addElement($element);
+                            $rowInLayout->addElementToRow($element);
                         }
                     }
+                    $this->_layoutHandler->addRow($rowInLayout);
                 }
 
                 break;
