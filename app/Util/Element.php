@@ -8,11 +8,6 @@ abstract  class Element
     private $_classes;
     private $_styles;
 
-    /*
-     * TODO:
-     * Add functionality for setting content of element
-     */
-
     function __construct($classes, $styles)
     {
         $this->_classes = $this->unwrapArray($classes);

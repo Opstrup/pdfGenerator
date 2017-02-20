@@ -12,9 +12,8 @@ class LayoutHandler
     private $_body = array();
 
     /*
-     * TODO:
-     * Add calculation for pages
-     * Add intelligent page break
+     * TODO: Add calculation for pages
+     * TODO: Add intelligent page break
      */
 
     function __construct($styleSheets = [])

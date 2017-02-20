@@ -28,6 +28,9 @@ class PDFGenerator
         $snappy->generateFromHtml($this->_layoutHandler->getLayout(), $path . $fileName);
     }
 
+    /**
+     * TODO: Refactor this function
+     */
     private function createPage($data, $page)
     {
         switch ($page) {
@@ -44,6 +47,14 @@ class PDFGenerator
                         }
                         else if ($col["element"]["type"] == "div") {
                             $element = new DivElement($col["element"]["class"], $col["element"]["style"], $col["element"]["content"]);
+                            $rowInLayout->addElementToRow($element);
+                        }
+                        else if ($col["element"]["type"] == "lines") {
+                            /*
+                             * TODO: Extract only x number of lines from data variable
+                             * TODO: Send config settings for LinesElement
+                             */
+                            $element = new LinesElement($col["element"]["class"], $col["element"]["style"], $data, "");
                             $rowInLayout->addElementToRow($element);
                         }
                     }
