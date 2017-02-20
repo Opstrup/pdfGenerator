@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use pdfgenerator\Util\LinesElement;
+use PhpParser\Node\Expr\AssignOp\Div;
 use Tests\TestCase;
 use pdfgenerator\Util\Element;
 use pdfgenerator\Util\ImageElement;
@@ -41,6 +42,13 @@ class ElementTest extends TestCase
         $classes = ["col-md-1", "pull-right"];
         $UUT = new DivElement($classes, $styles);
         $element = '<div class="pull-right col-md-1" style="align-items: center; background-color: #0d3625;"></div>';
+        $this->assertEquals($element, $UUT->toString());
+    }
+
+    public function test_element_should_have_content()
+    {
+        $UUT = new DivElement([], [], "Hello");
+        $element = '<div class="" style="">Hello</div>';
         $this->assertEquals($element, $UUT->toString());
     }
 
