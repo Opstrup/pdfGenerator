@@ -15,6 +15,9 @@ class LinesElement extends Element
         $this->prepareData($data, $lineConfigSettings);
     }
 
+    /**
+     * TODO: table needs to be wrapped in div with class. (default style for table width is 100%).
+     */
     public function toString()
     {
         return '<table class="table ' . parent::getClasses() . '" style="' . parent::getStyles() . '">' .
@@ -25,6 +28,9 @@ class LinesElement extends Element
             '</table>';
     }
 
+    /**
+     * TODO: implement lineConfigSettings
+     */
     private function prepareData($data, $lineConfigSettings)
     {
         if (sizeof($data) > 0)

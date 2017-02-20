@@ -175,4 +175,24 @@ class PDFGeneratorTest extends TestCase
         $UUT = new PDFGenerator();
         $UUT->generatePDFFromJSONData($this->json, "-logo+text_on_second_row_text-justify");
     }
+
+    public function test_feature_should_create_pdf_with_lines()
+    {
+        $this->json["data"]["lines"] = [
+            ["article number" => 132, "name" => "Sko", "discount" => 0, "price" => 300],
+            ["article number" => 3210, "name" => "Bukser", "discount" => 20, "price" => 100],
+            ["article number" => 7890, "name" => "T-shirt", "discount" => 50, "price" => 350]
+        ];
+        $this->json["layout"]["firstpage"] = [
+            "row1" => [
+                "col1" => ["element" => [
+                    "type" => "lines",
+                    "class" => ["col-xs-7", "table-striped"],
+                    "style" => [],
+                ]
+                ],
+                "col2" => ["element" => ["type" => "", "class" => [], "style" => []]], "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]]];
+        $UUT = new PDFGenerator();
+        $UUT->generatePDFFromJSONData($this->json, "-lines");
+    }
 }
