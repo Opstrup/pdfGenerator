@@ -97,4 +97,82 @@ class PDFGeneratorTest extends TestCase
         $UUT = new PDFGenerator();
         $UUT->generatePDFFromJSONData($this->json, "-logo+text");
     }
+
+    public function test_feature_should_create_pdf_with_two_rows()
+    {
+        $this->json["layout"]["firstpage"] = [
+            "row1" => [
+                "col1" => ["element" => [
+                    "type" => "image",
+                    "src" => "http://freesoft.dk/images/pics/freesoft-logo.png",
+                    "class" => ["col-xs-6"],
+                    "style" => [],
+                ]
+                ],
+                "col2" => ["element" => [
+                    "type" => "div",
+                    "class" => ["col-xs-3"],
+                    "style" => [],
+                    "content" => "",
+                ]
+                ], "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]],
+            "row2" => [
+                "col1" => ["element" => [
+                    "type" => "div",
+                    "class" => ["col-xs-12"],
+                    "style" => [],
+                    "content" => "Sed ut perspiciatis unde omnis iste natus error sit voluptatem" .
+                        " accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae " .
+                        "ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt" .
+                        " explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut" .
+                        " odit aut fugit, sed quia consequuntur magni dolores eos qui ratione" .
+                        " voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum" .
+                        " quia dolor sit amet, consectetur,"
+                ]
+                ],
+                "col2" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]
+            ]];
+        $UUT = new PDFGenerator();
+        $UUT->generatePDFFromJSONData($this->json, "-logo+text_on_second_row");
+    }
+
+    public function test_feature_should_create_pdf_with_two_rows_with_correct_class()
+    {
+        $this->json["layout"]["firstpage"] = [
+            "row1" => [
+                "col1" => ["element" => [
+                    "type" => "image",
+                    "src" => "http://freesoft.dk/images/pics/freesoft-logo.png",
+                    "class" => ["col-xs-6"],
+                    "style" => [],
+                ]
+                ],
+                "col2" => ["element" => [
+                    "type" => "div",
+                    "class" => ["col-xs-3"],
+                    "style" => [],
+                    "content" => "1",
+                ]
+                ], "col3" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => "2"]]],
+            "row2" => [
+                "col1" => ["element" => [
+                    "type" => "div",
+                    "class" => ["col-xs-4", "text-justify"],
+                    "style" => [],
+                    "content" => "Sed ut perspiciatis unde omnis iste natus error sit voluptatem" .
+                        " accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae " .
+                        "ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt" .
+                        " explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut" .
+                        " odit aut fugit, sed quia consequuntur magni dolores eos qui ratione" .
+                        " voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum" .
+                        " quia dolor sit amet, consectetur,"
+                ]
+                ],
+                "col2" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]
+            ]];
+        $UUT = new PDFGenerator();
+        $UUT->generatePDFFromJSONData($this->json, "-logo+text_on_second_row_text-justify");
+    }
 }
