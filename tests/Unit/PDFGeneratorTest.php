@@ -7,19 +7,22 @@ use Tests\TestCase;
 
 class PDFGeneratorTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
+    private $json = [];
 
-    public function test_simple_dummy_test()
+    public function setUp()
     {
-        $UUT = new PDFGenerator();
-        $this->assertEquals($UUT->test(), true);
+        $this->json = [
+                    "data" => [
+                        "lines" => []
+                    ],
+                    "config" => [],
+                    "type" => "invoice",
+                    "layout" => [
+                        "firstpage" => [],
+                        "secondpage" => [],
+                        "thirdpage" => [],
+                        "lastpage" => []
+                    ]
+        ];
     }
 }

@@ -19,7 +19,6 @@ class LayoutHandler
 
     function __construct($styleSheets = [])
     {
-        // TODO: Add dynamic loading of stylesheets
         $styles = '';
         foreach ($styleSheets as $sheet)
         {
