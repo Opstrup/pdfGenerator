@@ -48,4 +48,15 @@ class LayoutHandlerTest extends TestCase
             '</div>';
         $this->assertEquals($UUT->getLayout(), $layout);
     }
+
+    public function test_should_add_custom_stylesheet()
+    {
+        $stylesheet = ['PDFStyles'];
+        $UUT = new LayoutHandler($stylesheet);
+        $pdfSkeleton = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">' .
+            '<link rel="stylesheet" type="text/css" href="' . public_path("/css/PDFStyles.css") . '" >' .
+            '<div class="container">' .
+            '</div>';
+        $this->assertEquals($UUT->getLayout(), $pdfSkeleton);
+    }
 }
