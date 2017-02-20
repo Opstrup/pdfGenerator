@@ -41,7 +41,7 @@ class PDFGenerator
                             $this->_layoutHandler->addElement($element);
                         }
                         else if ($col["element"]["type"] == "div") {
-                            $element = new DivElement(["col-md-12"], []);
+                            $element = new DivElement($col["element"]["class"], $col["element"]["style"], $col["element"]["content"]);
                             $this->_layoutHandler->addElement($element);
                         }
                     }
