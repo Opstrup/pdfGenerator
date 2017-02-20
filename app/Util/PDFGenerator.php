@@ -12,14 +12,14 @@ class PDFGenerator
     private $_stylesheets = ["PDFStyles"];
     private $_layoutHandler = null;
 
-    public function generatePDFFromJSONData($JSONdata)
+    public function generatePDFFromJSONData($JSONdata, $fileNameExtension = "")
     {
         Log::info('*-------------------------------------------*');
         Log::info('|       Facade pdf generation started       |');
         $this->_layoutHandler = new LayoutHandler($this->_stylesheets);
         $snappy = App::make('snappy.pdf');
         $path = __DIR__ . '/../../temp/';
-        $fileName = time() . '.pdf';
+        $fileName = time() . $fileNameExtension . '.pdf';
 
         // Create new elements here
         $this->createPage($JSONdata, "firstpage");
@@ -37,7 +37,7 @@ class PDFGenerator
                     foreach ($row as $col)
                     {
                         if ($col["element"]["type"] == "image") {
-                            $element = new ImageElement([], [], $col["element"]["src"]);
+                            $element = new ImageElement($col["element"]["class"], $col["element"]["style"], $col["element"]["src"]);
                             $this->_layoutHandler->addElement($element);
                         }
                         else if ($col["element"]["type"] == "div") {
