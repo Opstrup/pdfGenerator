@@ -27,15 +27,12 @@ class PDFGenerator
         $snappy->generateFromHtml($this->_layoutHandler->getLayout(), $path . $fileName);
     }
 
-    /**
-     * TODO: Refactor this function
-     */
     private function createPage($data, $page)
     {
         switch ($page) {
             case "firstpage":
 
-                foreach ($data["layout"]["firstpage"] as $row)
+                foreach ($data["layout"][$page] as $row)
                 {
                     $rowInLayout = new Row();
                     foreach ($row as $col)
@@ -44,16 +41,26 @@ class PDFGenerator
                     }
                     $this->_layoutHandler->addRow($rowInLayout);
                 }
-
                 break;
             case "lastpage":
-
+                foreach ($data["layout"][$page] as $row)
+                {
+                    $rowInLayout = new Row();
+                    foreach ($row as $col)
+                    {
+                        $rowInLayout->addElementToRow($this->createContentForRow($col, $data));
+                    }
+                    $this->_layoutHandler->addRow($rowInLayout);
+                }
                 break;
             default:
                 return true;
         }
     }
 
+    /**
+     * TODO: Refactor the constructors for the elements, abstract factory pattern
+     */
     private function createContentForRow($col, $linesData)
     {
         if ($col["element"]["type"] == "image") {
