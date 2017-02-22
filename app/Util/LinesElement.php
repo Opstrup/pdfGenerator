@@ -30,9 +30,6 @@ class LinesElement extends Element
             '</table></div>';
     }
 
-    /**
-     * TODO: implement lineConfigSettings
-     */
     private function prepareData($data, $lineConfigSettings)
     {
         if (sizeof($data) > 0)
@@ -42,10 +39,10 @@ class LinesElement extends Element
                 $this->_tableHeaderElements .= '<th>' . $headerElement . '</th>';
             }
 
-            foreach ($data as $tableRow)
+            for ($i = 0; $i < $lineConfigSettings["numberOfLines"]; $i++)
             {
                 $this->_tableRowElements .= '<tr>';
-                foreach ($tableRow as $value)
+                foreach ($data[$i] as $value)
                 {
                     $this->_tableRowElements .= '<td>' . $value . '</td>';
                 }

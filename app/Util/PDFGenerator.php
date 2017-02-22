@@ -75,11 +75,7 @@ class PDFGenerator
             return new DivElement($col["element"]["class"], $col["element"]["style"], $col["element"]["content"]);
         }
         else if ($col["element"]["type"] == "lines") {
-            /*
-             * TODO: Extract only x number of lines from data variable
-             * TODO: Send config settings for LinesElement
-             */
-            return new LinesElement($col["element"]["table-class"], $col["element"]["class"], $col["element"]["style"], $linesData["data"]["lines"], "");
+            return new LinesElement($col["element"]["table-class"], $col["element"]["class"], $col["element"]["style"], $linesData["data"]["lines"], $col["element"]["config"]);
         }
         else if ($col["element"]["type"] == "footer") {
             return new FooterElement($col["element"]["class"], $col["element"]["style"], $col["element"]["content"]);

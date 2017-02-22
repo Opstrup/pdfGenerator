@@ -178,6 +178,7 @@ class PDFGeneratorTest extends TestCase
                     "class" => ["col-xs-6"],
                     "table-class" => ["table-striped"],
                     "style" => [],
+                    "config" => ["numberOfLines" => 2]
                 ]
                 ],
                 "col2" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => ""]],
@@ -200,6 +201,7 @@ class PDFGeneratorTest extends TestCase
                     "class" => ["col-xs-6"],
                     "table-class" => ["table-striped"],
                     "style" => [],
+                    "config" => ["numberOfLines" => 3]
                 ]
                 ],
                 "col2" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => ""]],
