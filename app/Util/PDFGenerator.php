@@ -22,7 +22,6 @@ class PDFGenerator
         $path = __DIR__ . '/../../temp/';
         $fileName = time() . $fileNameExtension . '.pdf';
 
-        // Create new elements here
         $this->createPage($JSONdata, "firstpage");
 
         $snappy->generateFromHtml($this->_layoutHandler->getLayout(), $path . $fileName);
@@ -41,28 +40,10 @@ class PDFGenerator
                     $rowInLayout = new Row();
                     foreach ($row as $col)
                     {
-                        if ($col["element"]["type"] == "image") {
-                            $element = new ImageElement($col["element"]["class"], $col["element"]["style"], $col["element"]["src"]);
-                            $rowInLayout->addElementToRow($element);
-                        }
-                        else if ($col["element"]["type"] == "div") {
-                            $element = new DivElement($col["element"]["class"], $col["element"]["style"], $col["element"]["content"]);
-                            $rowInLayout->addElementToRow($element);
-                        }
-                        else if ($col["element"]["type"] == "lines") {
-                            /*
-                             * TODO: Extract only x number of lines from data variable
-                             * TODO: Send config settings for LinesElement
-                             */
-                            $element = new LinesElement($col["element"]["table-class"], $col["element"]["class"], $col["element"]["style"], $data["data"]["lines"], "");
-                            $rowInLayout->addElementToRow($element);
-                        }
+                        $rowInLayout->addElementToRow($this->createContentForRow($col, $data));
                     }
                     $this->_layoutHandler->addRow($rowInLayout);
                 }
-
-                break;
-            case "secondpage":
 
                 break;
             case "lastpage":
@@ -70,6 +51,23 @@ class PDFGenerator
                 break;
             default:
                 return true;
+        }
+    }
+
+    private function createContentForRow($col, $linesData)
+    {
+        if ($col["element"]["type"] == "image") {
+            return new ImageElement($col["element"]["class"], $col["element"]["style"], $col["element"]["src"]);
+        }
+        else if ($col["element"]["type"] == "div") {
+            return new DivElement($col["element"]["class"], $col["element"]["style"], $col["element"]["content"]);
+        }
+        else if ($col["element"]["type"] == "lines") {
+            /*
+             * TODO: Extract only x number of lines from data variable
+             * TODO: Send config settings for LinesElement
+             */
+            return new LinesElement($col["element"]["table-class"], $col["element"]["class"], $col["element"]["style"], $linesData["data"]["lines"], "");
         }
     }
 }

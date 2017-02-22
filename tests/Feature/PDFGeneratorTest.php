@@ -53,7 +53,8 @@ class PDFGeneratorTest extends TestCase
                     "style" => []
                     ]
                 ],
-                "col2" => ["element" => ["type" => "", "class" => [], "style" => [],]], "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]]];
+                "col2" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]]]];
 
         $UUT = new PDFGenerator();
         $UUT->generatePDFFromJSONData($this->json, "-only_logo");
@@ -70,7 +71,8 @@ class PDFGeneratorTest extends TestCase
                     "style" => [],
                 ]
                 ],
-                "col2" => ["element" => ["type" => "", "class" => [], "style" => []]], "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]]];
+                "col2" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]]]];
 
         $UUT = new PDFGenerator();
         $UUT->generatePDFFromJSONData($this->json, "-logo_correct_class");
@@ -93,7 +95,7 @@ class PDFGeneratorTest extends TestCase
                     "style" => [],
                     "content" => "Hello world",
                 ]
-                ], "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]]];
+                ], "col3" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]]]];
         $UUT = new PDFGenerator();
         $UUT->generatePDFFromJSONData($this->json, "-logo+text");
     }
@@ -102,20 +104,11 @@ class PDFGeneratorTest extends TestCase
     {
         $this->json["layout"]["firstpage"] = [
             "row1" => [
-                "col1" => ["element" => [
-                    "type" => "image",
-                    "src" => "http://freesoft.dk/images/pics/freesoft-logo.png",
+                "col1" => ["element" => ["type" => "image", "src" => "http://freesoft.dk/images/pics/freesoft-logo.png",
                     "class" => ["col-xs-6"],
-                    "style" => [],
-                ]
-                ],
-                "col2" => ["element" => [
-                    "type" => "div",
-                    "class" => ["col-xs-3"],
-                    "style" => [],
-                    "content" => "",
-                ]
-                ], "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]],
+                    "style" => []]],
+                "col2" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => ""]]],
             "row2" => [
                 "col1" => ["element" => [
                     "type" => "div",
@@ -131,7 +124,7 @@ class PDFGeneratorTest extends TestCase
                 ]
                 ],
                 "col2" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]],
-                "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]
+                "col3" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]]
             ]];
         $UUT = new PDFGenerator();
         $UUT->generatePDFFromJSONData($this->json, "-logo+text_on_second_row");
@@ -148,13 +141,8 @@ class PDFGeneratorTest extends TestCase
                     "style" => [],
                 ]
                 ],
-                "col2" => ["element" => [
-                    "type" => "div",
-                    "class" => ["col-xs-3"],
-                    "style" => [],
-                    "content" => "1",
-                ]
-                ], "col3" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => "2"]]],
+                "col2" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => "1"]],
+                "col3" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => "2"]]],
             "row2" => [
                 "col1" => ["element" => [
                     "type" => "div",
@@ -169,8 +157,8 @@ class PDFGeneratorTest extends TestCase
                         " quia dolor sit amet, consectetur,"
                 ]
                 ],
-                "col2" => ["element" => ["type" => "div", "class" => [], "style" => [], "content" => ""]],
-                "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]
+                "col2" => ["element" => ["type" => "div", "class" => ["col-xs-4"], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "div", "class" => ["col-xs-4"], "style" => [], "content" => ""]]
             ]];
         $UUT = new PDFGenerator();
         $UUT->generatePDFFromJSONData($this->json, "-logo+text_on_second_row_text-justify");
@@ -187,12 +175,13 @@ class PDFGeneratorTest extends TestCase
             "row1" => [
                 "col1" => ["element" => [
                     "type" => "lines",
-                    "class" => ["col-xs-5"],
+                    "class" => ["col-xs-6"],
                     "table-class" => ["table-striped"],
                     "style" => [],
                 ]
                 ],
-                "col2" => ["element" => ["type" => "", "class" => [], "style" => []]], "col3" => ["element" => ["type" => "", "class" => [], "style" => []]]]];
+                "col2" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [],"content" => "" ]]]];
         $UUT = new PDFGenerator();
         $UUT->generatePDFFromJSONData($this->json, "-lines");
     }
