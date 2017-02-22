@@ -83,7 +83,7 @@ class ElementTest extends TestCase
     public function test_element_should_be_an_footer_tag()
     {
         $UUT = new FooterElement([""], [""]);
-        $element = '<footer class="" style=";"></footer>';
+        $element = '<footer id="footer" class="" style=";"></footer>';
         $this->assertEquals($element, $UUT->toString());
     }
 
@@ -93,7 +93,7 @@ class ElementTest extends TestCase
         $classes = ["col-md-1"];
         $UUT = new FooterElement($classes, $styles);
 
-        $element = '<footer class="col-md-1" style="align-items: center; background-color: #0d3625;"></footer>';
+        $element = '<footer id="footer" class="col-md-1" style="align-items: center; background-color: #0d3625;"></footer>';
         $this->assertEquals($element, $UUT->toString());
     }
 
@@ -104,7 +104,7 @@ class ElementTest extends TestCase
         $content = "This is the content";
         $UUT = new FooterElement($classes, $styles, $content);
 
-        $element = '<footer class="col-md-1" style="align-items: center; background-color: #0d3625;">This is the content</footer>';
+        $element = '<footer id="footer" class="col-md-1" style="align-items: center; background-color: #0d3625;">This is the content</footer>';
         $this->assertEquals($element, $UUT->toString());
     }
 }

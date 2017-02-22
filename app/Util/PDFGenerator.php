@@ -11,20 +11,25 @@ use pdfgenerator\Util\Row;
 class PDFGenerator
 {
     private $_stylesheets = ["PDFStyles"];
+    private $_scripts = ["PDFStyleHelper"];
     private $_layoutHandler = null;
 
     public function generatePDFFromJSONData($JSONdata, $fileNameExtension = "")
     {
         Log::info('*-------------------------------------------*');
         Log::info('|       Facade pdf generation started       |');
-        $this->_layoutHandler = new LayoutHandler($this->_stylesheets);
+        $this->_layoutHandler = new LayoutHandler($this->_stylesheets, $this->_scripts);
         $snappy = App::make('snappy.pdf');
         $path = __DIR__ . '/../../temp/';
         $fileName = time() . $fileNameExtension . '.pdf';
 
         $this->createPage($JSONdata, "firstpage");
 
-        $snappy->generateFromHtml($this->_layoutHandler->getLayout(), $path . $fileName);
+        $snappy->generateFromHtml($this->_layoutHandler->getLayout(), $path . $fileName,
+            array('lowquality' => false,
+            'encoding' => 'utf-8',
+            'images' => true,
+            'enable-javascript' => true));
     }
 
     private function createPage($data, $page)
