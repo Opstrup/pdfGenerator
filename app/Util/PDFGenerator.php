@@ -76,5 +76,8 @@ class PDFGenerator
              */
             return new LinesElement($col["element"]["table-class"], $col["element"]["class"], $col["element"]["style"], $linesData["data"]["lines"], "");
         }
+        else if ($col["element"]["type"] == "footer") {
+            return new FooterElement($col["element"]["class"], $col["element"]["style"], $col["element"]["content"]);
+        }
     }
 }

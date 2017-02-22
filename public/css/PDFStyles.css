@@ -13,3 +13,7 @@ th {
 footer {
     page-break-after: always;
 }
+
+.row:has (footer) {
+    page-break-after: always;
+}

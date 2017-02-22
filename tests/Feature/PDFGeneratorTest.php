@@ -185,4 +185,42 @@ class PDFGeneratorTest extends TestCase
         $UUT = new PDFGenerator();
         $UUT->generatePDFFromJSONData($this->json, "-lines");
     }
+
+    public function test_feature_should_create_pdf_with_footer_element()
+    {
+        $this->json["data"]["lines"] = [
+            ["article number" => 132, "name" => "Sko", "discount" => 0, "price" => 300],
+            ["article number" => 3210, "name" => "Bukser", "discount" => 20, "price" => 100],
+            ["article number" => 7890, "name" => "T-shirt", "discount" => 50, "price" => 350]
+        ];
+        $this->json["layout"]["firstpage"] = [
+            "row1" => [
+                "col1" => ["element" => [
+                    "type" => "lines",
+                    "class" => ["col-xs-6"],
+                    "table-class" => ["table-striped"],
+                    "style" => [],
+                ]
+                ],
+                "col2" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [],"content" => "" ]]],
+            "row2" => [
+                "col1" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => ""]],
+                "col2" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [],"content" => "" ]]
+            ],
+            "row3" => [
+                "col1" => ["element" => ["type" => "footer", "class" => ["col-xs-4 col-xs-offset-4"], "style" => [], "content" => "This is the footer!"]],
+                "col2" => ["element" => ["type" => "div", "class" => [""], "style" => [], "content" => ""]],
+                "col3" => ["element" => ["type" => "div", "class" => [""], "style" => [],"content" => "" ]]
+            ],
+            "row4" => [
+                "col1" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => ""]],
+                "col2" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [], "content" => "<h1>This is second page</h1>"]],
+                "col3" => ["element" => ["type" => "div", "class" => ["col-xs-3"], "style" => [],"content" => "" ]]
+            ],
+        ];
+        $UUT = new PDFGenerator();
+        $UUT->generatePDFFromJSONData($this->json, "-lines-with-footer");
+    }
 }

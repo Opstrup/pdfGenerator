@@ -16,6 +16,6 @@ class FooterElement extends Element
 
     public function toString()
     {
-        return '<footer class="' . parent::getClasses() . '" style="' . parent::getStyles() . '">' . $this->_content . '</footer>';
+        return '<footer id="footer" class="' . parent::getClasses() . '" style="' . parent::getStyles() . '">' . $this->_content . '</footer>';
     }
 }
