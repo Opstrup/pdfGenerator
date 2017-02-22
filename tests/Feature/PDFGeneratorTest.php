@@ -187,7 +187,8 @@ class PDFGeneratorTest extends TestCase
             "row1" => [
                 "col1" => ["element" => [
                     "type" => "lines",
-                    "class" => ["col-xs-7", "table-striped"],
+                    "class" => ["col-xs-5"],
+                    "table-class" => ["table-striped"],
                     "style" => [],
                 ]
                 ],

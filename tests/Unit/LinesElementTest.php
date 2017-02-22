@@ -7,28 +7,28 @@ use Tests\TestCase;
 
 class LinesElementTest extends TestCase
 {
-    public function test_element_should_be_empty_table()
+    public function test_lines_should_be_empty_table()
     {
-        $UUT = new LinesElement([""], [""], [], "");
-        $element = '<table class="table " style=";"><tr></tr></table>';
+        $UUT = new LinesElement([""], [""], [""], [], "");
+        $element = '<div class=""><table class="table " style=";"><tr></tr></table></div>';
         $this->assertEquals($element, $UUT->toString());
     }
 
-    public function test_element_should_be_empty_tableBordered()
+    public function test_lines_should_be_empty_tableBordered()
     {
         $classes = ["table-bordered"];
-        $UUT = new LinesElement($classes, [""], [], "");
-        $element = '<table class="table table-bordered" style=";"><tr></tr></table>';
+        $UUT = new LinesElement($classes, [""], [""], [], "");
+        $element = '<div class=""><table class="table table-bordered" style=";"><tr></tr></table></div>';
         $this->assertEquals($element, $UUT->toString());
     }
 
-    public function test_should_create_table_with_data()
+    public function test_lines_should_create_table_with_data()
     {
         $data = [["article number" => 132, "name" => "Sko", "discount" => 0, "price" => 300],
                  ["article number" => 3210, "name" => "Bukser", "discount" => 20, "price" => 100],
                  ["article number" => 7890, "name" => "T-shirt", "discount" => 50, "price" => 350]];
-        $UUT = new LinesElement([""], [""], $data, "");
-        $element = '<table class="table " style=";">' .
+        $UUT = new LinesElement([""], [""], [""], $data, "");
+        $element = '<div class=""><table class="table " style=";">' .
                 '<tr>' .
                     '<th>article number</th>' .
                     '<th>name</th>' .
@@ -53,7 +53,13 @@ class LinesElementTest extends TestCase
                     '<td>50</td>' .
                     '<td>350</td>' .
                 '</tr>' .
-            '</table>';
+            '</table></div>';
+        $this->assertEquals($element, $UUT->toString());
+    }
+    public function test_lines_wrapping_div_should_have_correct_class()
+    {
+        $UUT = new LinesElement([""], ["col-md-5"], [""], [], "");
+        $element = '<div class="col-md-5"><table class="table " style=";"><tr></tr></table></div>';
         $this->assertEquals($element, $UUT->toString());
     }
 }

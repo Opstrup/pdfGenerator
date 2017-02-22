@@ -3,29 +3,31 @@
 namespace pdfgenerator\Util;
 
 use pdfgenerator\Util\Element;
+use pdfgenerator\Util\Helper;
 
 class LinesElement extends Element
 {
     private $_tableHeaderElements;
     private $_tableRowElements;
+    private $_wrappingClasses;
+    private $_helper;
 
-    public function __construct($classes = [], $styles = [], $data, $lineConfigSettings)
+    public function __construct($tableClasses = [], $wrappingClasses = [], $styles = [], $data, $lineConfigSettings)
     {
-        parent::__construct($classes, $styles);
+        $this->_helper = New Helper();
+        parent::__construct($tableClasses, $styles);
         $this->prepareData($data, $lineConfigSettings);
+        $this->_wrappingClasses = $this->_helper->unwrapArray($wrappingClasses);
     }
 
-    /**
-     * TODO: table needs to be wrapped in div with class. (default style for table width is 100%).
-     */
     public function toString()
     {
-        return '<table class="table ' . parent::getClasses() . '" style="' . parent::getStyles() . '">' .
+        return '<div class="' . $this->_wrappingClasses . '"><table class="table ' . parent::getClasses() . '" style="' . parent::getStyles() . '">' .
             '<tr>' .
                 $this->_tableHeaderElements .
             '</tr>' .
             $this->_tableRowElements .
-            '</table>';
+            '</table></div>';
     }
 
     /**

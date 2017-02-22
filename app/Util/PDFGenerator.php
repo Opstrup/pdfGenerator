@@ -54,7 +54,7 @@ class PDFGenerator
                              * TODO: Extract only x number of lines from data variable
                              * TODO: Send config settings for LinesElement
                              */
-                            $element = new LinesElement($col["element"]["class"], $col["element"]["style"], $data["data"]["lines"], "");
+                            $element = new LinesElement($col["element"]["table-class"], $col["element"]["class"], $col["element"]["style"], $data["data"]["lines"], "");
                             $rowInLayout->addElementToRow($element);
                         }
                     }
