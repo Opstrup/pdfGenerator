@@ -2,16 +2,19 @@
 
 namespace pdfgenerator\Util;
 
+use pdfgenerator\Util\Helper;
 
 abstract  class Element
 {
     private $_classes;
     private $_styles;
+    private $_helper;
 
     function __construct($classes, $styles)
     {
-        $this->_classes = $this->unwrapArray($classes);
-        $this->_styles = $this->unwrapArray(array_map(function($styles´){ return $styles´ . ";" ;}, $styles));
+        $this->_helper = New Helper();
+        $this->_classes = $this->_helper->unwrapArray($classes);
+        $this->_styles = $this->_helper->unwrapArray(array_map(function($styles´){ return $styles´ . ";" ;}, $styles));
     }
 
     public function toString()
@@ -27,17 +30,5 @@ abstract  class Element
     public function getStyles()
     {
         return $this->_styles;
-    }
-
-    private function unwrapArray($array)
-    {
-        $unwrappedArray = array_pop($array);
-
-        foreach ($array as $item)
-        {
-            $unwrappedArray .= " " . $item;
-        }
-
-        return $unwrappedArray;
     }
 }
