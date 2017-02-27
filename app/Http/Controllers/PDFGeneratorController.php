@@ -12,6 +12,15 @@ class PDFGeneratorController extends Controller
     {
         // dispatch request to correct queue
         $data = $request->json()->all();
+
+        if (sizeof($data) == 0)
+        {
+            Log::info('*-----------------------------------*');
+            Log::info('|  ERROR! No data passed to service |');
+            Log::info('*-----------------------------------*');
+            return response('No data passed to service', 500);
+        }
+
         Log::info('*-----------------------------------*');
         Log::info('| generating pdf task send to queue |');
         Log::info('*-----------------------------------*');
