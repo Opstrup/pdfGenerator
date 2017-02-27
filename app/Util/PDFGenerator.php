@@ -64,7 +64,7 @@ class PDFGenerator
     }
 
     /**
-     * TODO: Refactor the constructors for the elements, abstract factory pattern
+     * TODO: Refactor the constructors for the elements, method factory pattern
      */
     private function createContentForRow($col, $linesData)
     {

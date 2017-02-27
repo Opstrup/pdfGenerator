@@ -37,12 +37,11 @@ class LayoutHandler
     public function getLayout()
     {
         $body = '';
-        foreach ($this->_body as $element)
+        foreach ($this->_body as $row)
         {
-            $body .= $element;
+            $body .= $row;
         }
 
         return $this->_layoutStyle . $this->_openingContainer . $body . $this->_closingContainer . $this->_scripts;
-//        return $this->_layoutStyle . $this->_openingContainer . $body . $this->_closingContainer . "<script>document.getElementById('footer').parentElement.className += ' page-break';</script>";
     }
 }
