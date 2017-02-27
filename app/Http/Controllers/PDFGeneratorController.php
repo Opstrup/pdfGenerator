@@ -18,7 +18,7 @@ class PDFGeneratorController extends Controller
             Log::info('*-----------------------------------*');
             Log::info('|  ERROR! No data passed to service |');
             Log::info('*-----------------------------------*');
-            return response('No data passed to service', 500);
+            return response()->json(['Status' => 'No data passed to service'], 500);
         }
 
         Log::info('*-----------------------------------*');
@@ -26,5 +26,6 @@ class PDFGeneratorController extends Controller
         Log::info('*-----------------------------------*');
 
         $this->dispatch(new GenerateInvoice($data));
+        return response()->json(['Status' => 'PDF job added to queue'], 200);
     }
 }
