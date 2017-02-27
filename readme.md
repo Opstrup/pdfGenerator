@@ -1,5 +1,25 @@
 ## PDFGenerator Documentation
 
+#### Dev. env
+For ease of development the service have been developed in a docker container
+
+#### The application
+1. Custom styling pdf
+2. Adding JS to pdf
+3. Queue system
+4. Dest. folder for pdf
+5. Running tests
+6. PDF elements
+
+#### Third part libs
+The following third part libs have been used on the linux dist.  for the html to pdf creation.
+1. libfontconfg1
+2. libxext6
+3. libxrender1
+
+These can be installed by using the apt package manager for linux. (apt-get install "package")
+
+#### JSON-data example
 ```json
 {
 	"data" : {
