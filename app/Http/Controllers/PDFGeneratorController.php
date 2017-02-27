@@ -27,15 +27,4 @@ class PDFGeneratorController extends Controller
 
         $this->dispatch(new GenerateInvoice($data));
     }
-
-    public function test()
-    {
-        Log::info('*-----------------------------------*');
-        Log::info('| generating pdf task send to queue |');
-        Log::info('*-----------------------------------*');
-
-        $fakeData = 'Awesome';
-        $this->dispatch(new GenerateInvoice($fakeData));
-        return 'pdf created';
-    }
 }
