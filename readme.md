@@ -1,40 +1,177 @@
-readme.md<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## PDFGenerator Documentation
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+```json
+{
+	"data" : {
+		"lines": [
+				{
+	                "id": 163,
+	                "articlenumber": "000341104",
+	                "type": 0,
+	                "name": "Union     S. 1/2",
+	                "index_on_worksheet": 1,
+	                "quantity": "6.00",
+	                "discount": "0.00",
+	                "price_line": "94.46",
+	                "status_line": 0,
+	                "netto_line": "566.76",
+	                "brutto_line": "708.45",
+	                "tax_total_line": "141.69",
+	                "tax_line": "25.00",
+	                "taxID_line": 10,
+	                "wholesaler_line": "bd",
+	                "employee_assigned": " ",
+	                "employee_assigned_id": 0,
+	                "registration_date": ""
+	            },
+	            {
+	                "id": 164,
+	                "articlenumber": "031425008",
+	                "type": 0,
+	                "name": "Støbt Brystnippel 1",
+	                "index_on_worksheet": 2,
+	                "quantity": "3.00",
+	                "discount": "0.00",
+	                "price_line": "157.02",
+	                "status_line": 0,
+	                "netto_line": "471.06",
+	                "brutto_line": "588.83",
+	                "tax_total_line": "117.77",
+	                "tax_line": "25.00",
+	                "taxID_line": 10,
+	                "wholesaler_line": "bd",
+	                "employee_assigned": " ",
+	                "employee_assigned_id": 0,
+	                "registration_date": ""
+	            },
+	            {
+	                "id": 165,
+	                "articlenumber": "034686232",
+	                "type": 0,
+	                "name": "Lige overg.mf.mf. 18x3/4",
+	                "index_on_worksheet": 3,
+	                "quantity": "10.00",
+	                "discount": "0.00",
+	                "price_line": "178.29",
+	                "status_line": 0,
+	                "netto_line": "1782.90",
+	                "brutto_line": "2228.62",
+	                "tax_total_line": "445.72",
+	                "tax_line": "25.00",
+	                "taxID_line": 10,
+	                "wholesaler_line": "bd",
+	                "employee_assigned": " ",
+	                "employee_assigned_id": 0,
+	                "registration_date": ""
+	            },
+	            {
+	                "id": 166,
+	                "articlenumber": "022215168",
+	                "type": 0,
+	                "name": "6 std Søml. Stålrør",
+	                "index_on_worksheet": 4,
+	                "quantity": "5.00",
+	                "discount": "0.00",
+	                "price_line": "1284.48",
+	                "status_line": 0,
+	                "netto_line": "6422.40",
+	                "brutto_line": "8028.00",
+	                "tax_total_line": "1605.60",
+	                "tax_line": "25.00",
+	                "taxID_line": 10,
+	                "wholesaler_line": "bd",
+	                "employee_assigned": " ",
+	                "employee_assigned_id": 0,
+	                "registration_date": ""
+	            }
+			]	
+	},
+	"layout" : {
+		"firstpage" : [
+			[
+				{
+					"element" : {
+						"type" : "lines",
+						"class" : ["col-xs-6"],
+						"table-class" : ["table-striped"],
+						"style" : [],
+						"config" : {
+							"numberOfLines" : 3
+						}
+					}	
+				},
+				{
+					"element" : {
+						"type" : "div",
+						"class" : ["col-xs-3"],
+						"style" : [],
+						"content" : ""
+					}
+				},
+				{
+					"element" : {
+						"type" : "div",
+						"class" : ["col-xs-3"],
+						"style" : [],
+						"content" : ""
+					}
+				}
+			],
+			[
+				{
+					"element" : {
+						"type" : "div",
+						"class" : ["col-xs-3"],
+						"style" : [],
+						"content" : ""
+					}	
+				},
+				{
+					"element" : {
+						"type" : "div",
+						"class" : ["col-xs-3"],
+						"style" : [],
+						"content" : ""
+					}
+				},
+				{
+					"element" : {
+						"type" : "div",
+						"class" : ["col-xs-3"],
+						"style" : [],
+						"content" : ""
+					}
+				}
+			],
+			[
+				{
+					"element" : {
+						"type" : "div",
+						"class" : ["col-xs-3"],
+						"style" : [],
+						"content" : ""
+					}	
+				},
+				{
+					"element" : {
+						"type" : "div",
+						"class" : ["col-xs-3"],
+						"style" : [],
+						"content" : ""
+					}
+				},
+				{
+					"element" : {
+						"type" : "div",
+						"class" : ["col-xs-3"],
+						"style" : [],
+						"content" : ""
+					}
+				}
+			]
+		]
+	},
+	"config" : [],
+	"type" : "invoice"
+}
+```
